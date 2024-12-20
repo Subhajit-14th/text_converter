@@ -18,6 +18,25 @@ export default function TextForm(profs) {
     setText(newText);
   };
 
+  const handleClearClick = () => {
+    console.log("Clear text" + myText);
+    let myCleanText = "";
+    setText(myCleanText);
+  };
+
+  const handleCopyToClipboardClick = (event) => {
+    console.log("My text is copy to clipboard");
+    navigator.clipboard
+      .writeText(myText)
+      .then(() => {
+        console.log("Text copied to clipboard");
+        alert("Text copied to clipboard!");
+      })
+      .catch((error) => {
+        console.error("Failed to copy text: ", error);
+      });
+  };
+
   const [myText, setText] = useState("");
   return (
     <>
@@ -50,6 +69,22 @@ export default function TextForm(profs) {
         >
           Convert to lowercase
         </button>
+
+        <button
+          type="submit"
+          className="btn btn-primary mx-1"
+          onClick={handleCopyToClipboardClick}
+        >
+          Copy to clipboard
+        </button>
+
+        <button
+          type="submit"
+          className="btn btn-primary mx-1"
+          onClick={handleClearClick}
+        >
+          Clear
+        </button>
       </div>
       <div className="container my-4">
         <h1>Your text summry</h1>
@@ -57,6 +92,8 @@ export default function TextForm(profs) {
           {myText.length == 0 ? 0 : myText.split(" ").length} words and{" "}
           {myText.length} character
         </p>
+        <h3>Preview</h3>
+        <p>{myText}</p>
       </div>
     </>
   );
