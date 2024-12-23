@@ -42,7 +42,9 @@ export default function TextForm(profs) {
     <>
       <div className="container">
         <div className="mb-3">
-          <div className="my-4">
+          <div
+            className={`my-4 text-${profs.mode === "dark" ? "white" : "dark"}`}
+          >
             <label className="form-label">{profs.heading}</label>
           </div>
           <textarea
@@ -86,10 +88,14 @@ export default function TextForm(profs) {
           Clear
         </button>
       </div>
-      <div className="container my-4">
+      <div
+        className={`container my-4 text-${
+          profs.mode === "dark" ? "white" : "dark"
+        }`}
+      >
         <h1>Your text summry</h1>
         <p>
-          {myText.length == 0 ? 0 : myText.split(" ").length} words and{" "}
+          {myText.length === 0 ? 0 : myText.split(" ").length} words and{" "}
           {myText.length} character
         </p>
         <h3>Preview</h3>
