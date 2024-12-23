@@ -59,7 +59,7 @@ export default function TextForm(profs) {
         </div>
         <button
           type="submit"
-          className="btn btn-primary mx-1"
+          className="btn btn-primary mx-1 my-1"
           onClick={handleUpClick}
         >
           Convert to uppercase
@@ -74,7 +74,7 @@ export default function TextForm(profs) {
 
         <button
           type="submit"
-          className="btn btn-primary mx-1"
+          className="btn btn-primary mx-1 my-1"
           onClick={handleCopyToClipboardClick}
         >
           Copy to clipboard
