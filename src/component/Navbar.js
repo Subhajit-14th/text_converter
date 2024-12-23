@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export default function Navbar(profs) {
   return (
@@ -9,9 +10,19 @@ export default function Navbar(profs) {
       }`}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           {profs.title}
-        </a>
+        </Link>
+
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-0 mb-lg-0">
+            <li class="nav-item">
+              <Link class="nav-link" to="/about">
+                About
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div

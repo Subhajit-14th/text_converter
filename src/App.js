@@ -1,9 +1,10 @@
 import "./App.css";
 import Alert from "./component/Alert";
-// import About from "./component/About";
+import About from "./component/About";
 import Navbar from "./component/Navbar";
 import TextForm from "./component/TextForm";
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -34,12 +35,23 @@ function App() {
 
   return (
     <>
-      <Navbar title="Text Converter" mode={mode} toggleMode={onToggleChange} />
-      <Alert alert={alert} />
-      <div className="container">
-        <TextForm heading="Enter your text" mode={mode} />
-        {/* <About /> */}
-      </div>
+      <Router>
+        <Navbar
+          title="Text Converter"
+          mode={mode}
+          toggleMode={onToggleChange}
+        />
+        <Alert alert={alert} />
+        <div className="container my -3">
+          <Routes>
+            <Route
+              path="/"
+              element={<TextForm heading="Enter your text" mode={mode} />}
+            />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </div>
+      </Router>
     </>
   );
 }
